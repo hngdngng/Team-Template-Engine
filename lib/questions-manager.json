@@ -1,0 +1,28 @@
+[
+    {
+        "name": "name",
+        "message": "What is your manager's name?"
+    },
+    {
+        "name": "id",
+        "message": "What is your manager's Id?"
+    },
+    {
+        "name": "email",
+        "message": "What is your manager's email?"
+    },
+    {
+        "name": "officeNum",
+        "message": "What is your manager's office number?"
+    },
+    {
+        "type": "list",
+        "name": "newMember",
+        "message": "What type of team member would you like to add?",
+        "choices": [
+            "Engineer",
+            "Intern",
+            "I am done adding team members"
+        ]
+    }
+]

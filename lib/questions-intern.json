@@ -1,0 +1,28 @@
+[
+    {
+        "name": "name",
+        "message": "What is your intern's name?"
+    },
+    {
+        "name": "id",
+        "message": "What is your intern's Id?"
+    },
+    {
+        "name": "email",
+        "message": "What is your intern's email?"
+    },
+    {
+        "name": "school",
+        "message": "What is your intern's school?"
+    },
+    {
+        "type": "list",
+        "name": "newMember",
+        "message": "What type of team member would you like to add?",
+        "choices": [
+            "Engineer",
+            "Intern",
+            "I am done adding team members"
+        ]
+    }
+]
