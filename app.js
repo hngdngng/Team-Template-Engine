@@ -12,60 +12,52 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
-let teamArray = new Array;
+const teamArray = [];
 
-function initMgr() {
+//Function to ask question
+function askQuestion(question) {
     console.log("Let's form your team. Please answer the following prompts.")
-    inquirer
-        .prompt(mgrQ)
+    return inquirer
+        .prompt(question)
         .then(data => {
-            const mgr = new Manager(data.name, data.id, data.email, data.officeNum);
-            teamArray.push(mgr);
+            createTeamMember(question, data);
             if (data.newMember == "Engineer") {
-                initEng();
+                return askQuestion(engQ);
             } else if (data.newMember == "Intern") {
-                initInt();
-            } else return;
+                return askQuestion(intQ);
+            }
         })
 }
 
-function initEng() {
-    inquirer
-        .prompt(engQ)
-        .then(data => {
-            const eng = new Engineer(data.name, data.id, data.email, data.github);
-            teamArray.push(eng);
-            console.log(teamArray);
-            if (data.newMember == "Engineer") {
-                initEng();
-            } else if (data.newMember == "Intern") {
-                initInt();
-            } else return;
-        })
+//Function to create team member and update teamArray
+function createTeamMember(question, data) {
+    let teamMember;
+    if (question == mgrQ) {
+        teamMember = new Manager(data.name, data.id, data.email, data.officeNum);
+    }
+    if (question == engQ) {
+        teamMember = new Engineer(data.name, data.id, data.email, data.github);
+    }
+    if (question == intQ) {
+        teamMember = new Intern(data.name, data.id, data.email, data.school);
+    }
+    if (teamMember) {
+        teamArray.push(teamMember);
+    }
 }
 
-function initInt() {
-    inquirer
-        .prompt(intQ)
-        .then(data => {
-            const int = new Intern(data.name, data.id, data.email, data.school);
-            teamArray.push(int);
-            if (data.newMember == "Engineer") {
-                initEng();
-            } else if (data.newMember == "Intern") {
-                initInt();
-            } else return;
-        })
+// function to Write File
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function (err) {
+        if (err) {
+            return console.log(err);
+        }
+        console.log("Success!");
+    })
 }
 
-initMgr();
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
+//Initialize with Manager Questions, then once all prompts are complete, write the teams.html with the output from render function
+askQuestion(mgrQ).then(() => {
+    console.log(teamArray);
+    writeToFile(outputPath, render(teamArray))
+});
