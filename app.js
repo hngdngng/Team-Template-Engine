@@ -16,7 +16,7 @@ const teamArray = [];
 
 //Function to ask question
 function askQuestion(question) {
-    console.log("Let's form your team. Please answer the following prompts.")
+    console.log("Let's form your team. Answer the following prompts.")
     return inquirer
         .prompt(question)
         .then(data => {
@@ -56,8 +56,7 @@ function writeToFile(fileName, data) {
     })
 }
 
-//Initialize with Manager Questions, then once all prompts are complete, write the teams.html with the output from render function
+//Initialize with Manager Questions, then once all prompts are complete & promises are returned, write the teams.html with the output from render function
 askQuestion(mgrQ).then(() => {
-    console.log(teamArray);
     writeToFile(outputPath, render(teamArray))
 });
