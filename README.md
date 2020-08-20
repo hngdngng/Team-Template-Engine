@@ -5,7 +5,7 @@
   This application features a Node command line interface that takes in information about each individual on a team and then generates an HTML webpage that displays information for each person. App development followed test driven development (TDD) and utilizes the Inquirer npm package, Bootstrap CSS framework, ES6 javaScript, and validated with the jest javaScript testing framework.
 
   Video Walkthrough  
-  [![Watch the video](https://img.youtube.com/vi/jdt3izOO9YE/default.jpg)](https://youtu.be/jdt3izOO9YE)  
+  [![Watch the video](https://img.youtube.com/vi/FhU7OlwrsOc/default.jpg)](https://youtu.be/FhU7OlwrsOc)  
 
   Image of Prompts   
   ![Image of command line terminal](./assets/terminal.png)  
