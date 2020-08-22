@@ -7,8 +7,8 @@
   Video Walkthrough  
   [![Watch the video](https://img.youtube.com/vi/FhU7OlwrsOc/default.jpg)](https://youtu.be/FhU7OlwrsOc)  
 
-  Image of Prompts   
-  ![Image of command line terminal](./assets/terminal.png)  
+  CLI and Rendered HTML  
+  ![Image of command line terminal](./assets/TTE.png)  
 
   Example Output    
   See output/example-output.html in folder directory
